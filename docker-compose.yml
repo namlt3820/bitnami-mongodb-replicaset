@@ -8,11 +8,11 @@ services:
       - MONGODB_REPLICA_SET_MODE=primary
       - MONGODB_ROOT_PASSWORD=password123
       - MONGODB_REPLICA_SET_KEY=replicasetkey123
-      - MONGODB_PORT_NUMBER=27020
+      - MONGODB_PORT_NUMBER=27000
     volumes:
-      - 'mongodb_master_data:/bitnami/mongodb'
+      - 'mongodb_master_data_7:/bitnami/mongodb'
     ports:
-      - 27020:27020
+      - 27000:27000
 
   mongodb-secondary-1:
     image: docker.io/bitnami/mongodb:4.4
@@ -22,12 +22,12 @@ services:
       - MONGODB_ADVERTISED_HOSTNAME=mongodb-secondary-1
       - MONGODB_REPLICA_SET_MODE=secondary
       - MONGODB_INITIAL_PRIMARY_HOST=mongodb-primary
-      - MONGODB_INITIAL_PRIMARY_PORT_NUMBER=27020
+      - MONGODB_INITIAL_PRIMARY_PORT_NUMBER=27000
       - MONGODB_INITIAL_PRIMARY_ROOT_PASSWORD=password123
       - MONGODB_REPLICA_SET_KEY=replicasetkey123
-      - MONGODB_PORT_NUMBER=27018
+      - MONGODB_PORT_NUMBER=27001
     ports:
-      - 27018:27018
+      - 27001:27001
 
   mongodb-secondary-2:
     image: docker.io/bitnami/mongodb:4.4
@@ -37,13 +37,73 @@ services:
       - MONGODB_ADVERTISED_HOSTNAME=mongodb-secondary-2
       - MONGODB_REPLICA_SET_MODE=secondary
       - MONGODB_INITIAL_PRIMARY_HOST=mongodb-primary
-      - MONGODB_INITIAL_PRIMARY_PORT_NUMBER=27020
+      - MONGODB_INITIAL_PRIMARY_PORT_NUMBER=27000
       - MONGODB_INITIAL_PRIMARY_ROOT_PASSWORD=password123
       - MONGODB_REPLICA_SET_KEY=replicasetkey123
-      - MONGODB_PORT_NUMBER=27019
+      - MONGODB_PORT_NUMBER=27002
     ports:
-      - 27019:27019
+      - 27002:27002
+
+  mongodb-secondary-3:
+    image: docker.io/bitnami/mongodb:4.4
+    depends_on:
+      - mongodb-primary
+    environment:
+      - MONGODB_ADVERTISED_HOSTNAME=mongodb-secondary-3
+      - MONGODB_REPLICA_SET_MODE=secondary
+      - MONGODB_INITIAL_PRIMARY_HOST=mongodb-primary
+      - MONGODB_INITIAL_PRIMARY_PORT_NUMBER=27000
+      - MONGODB_INITIAL_PRIMARY_ROOT_PASSWORD=password123
+      - MONGODB_REPLICA_SET_KEY=replicasetkey123
+      - MONGODB_PORT_NUMBER=27003
+    ports:
+      - 27003:27003
+
+  mongodb-secondary-4:
+    image: docker.io/bitnami/mongodb:4.4
+    depends_on:
+      - mongodb-primary
+    environment:
+      - MONGODB_ADVERTISED_HOSTNAME=mongodb-secondary-4
+      - MONGODB_REPLICA_SET_MODE=secondary
+      - MONGODB_INITIAL_PRIMARY_HOST=mongodb-primary
+      - MONGODB_INITIAL_PRIMARY_PORT_NUMBER=27000
+      - MONGODB_INITIAL_PRIMARY_ROOT_PASSWORD=password123
+      - MONGODB_REPLICA_SET_KEY=replicasetkey123
+      - MONGODB_PORT_NUMBER=27004
+    ports:
+      - 27004:27004
+
+  mongodb-secondary-5:
+    image: docker.io/bitnami/mongodb:4.4
+    depends_on:
+      - mongodb-primary
+    environment:
+      - MONGODB_ADVERTISED_HOSTNAME=mongodb-secondary-5
+      - MONGODB_REPLICA_SET_MODE=secondary
+      - MONGODB_INITIAL_PRIMARY_HOST=mongodb-primary
+      - MONGODB_INITIAL_PRIMARY_PORT_NUMBER=27000
+      - MONGODB_INITIAL_PRIMARY_ROOT_PASSWORD=password123
+      - MONGODB_REPLICA_SET_KEY=replicasetkey123
+      - MONGODB_PORT_NUMBER=27005
+    ports:
+      - 27005:27005
+
+  mongodb-secondary-6:
+    image: docker.io/bitnami/mongodb:4.4
+    depends_on:
+      - mongodb-primary
+    environment:
+      - MONGODB_ADVERTISED_HOSTNAME=mongodb-secondary-6
+      - MONGODB_REPLICA_SET_MODE=secondary
+      - MONGODB_INITIAL_PRIMARY_HOST=mongodb-primary
+      - MONGODB_INITIAL_PRIMARY_PORT_NUMBER=27000
+      - MONGODB_INITIAL_PRIMARY_ROOT_PASSWORD=password123
+      - MONGODB_REPLICA_SET_KEY=replicasetkey123
+      - MONGODB_PORT_NUMBER=27006
+    ports:
+      - 27006:27006
 
 volumes:
-  mongodb_master_data:
+  mongodb_master_data_7:
     driver: local
