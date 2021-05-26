@@ -2,6 +2,7 @@ version: '2'
 
 services:
   mongodb-primary:
+    container_name: mongodb-primary
     image: docker.io/bitnami/mongodb:4.4
     environment:
       - MONGODB_ADVERTISED_HOSTNAME=mongodb-primary
@@ -16,6 +17,7 @@ services:
     restart: always
 
   mongodb-secondary-1:
+    container_name: mongodb-secondary-1
     image: docker.io/bitnami/mongodb:4.4
     depends_on:
       - mongodb-primary
@@ -32,6 +34,7 @@ services:
     restart: always
 
   mongodb-secondary-2:
+    container_name: mongodb-secondary-2
     image: docker.io/bitnami/mongodb:4.4
     depends_on:
       - mongodb-primary
